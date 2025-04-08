@@ -5,15 +5,19 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CategoriesScreen from './screen/CategoriesScreen';
 import MealsOverviewScreen from './screen/MealsOverviewScreen';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="transparent"
+        translucent
+      />
       <NavigationContainer>
-        <Stack.Navigator
-        >
+        <Stack.Navigator>
           <Stack.Screen name="Categories" component={CategoriesScreen} />
           <Stack.Screen name="MealsOverview" component={MealsOverviewScreen} />
         </Stack.Navigator>
@@ -21,5 +25,3 @@ export default function App() {
     </GestureHandlerRootView>
   );
 }
-
-

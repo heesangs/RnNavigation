@@ -1,8 +1,9 @@
-import {StyleSheet, Text, View} from 'react-native';
-import {MEALS} from '../data/dummy-data';
-import {FlatList} from 'react-native-gesture-handler';
+import { StyleSheet, View } from 'react-native';
+import { MEALS } from '../data/dummy-data';
+import { FlatList } from 'react-native-gesture-handler';
 import MealItem from '../components/MealItem';
-function MealsOverviewScreen({route}) {
+
+function MealsOverviewScreen({ route }) {
   const catID = route.params.categoryId;
 
   const displayMeals = MEALS.filter(mealItem => {
@@ -10,7 +11,15 @@ function MealsOverviewScreen({route}) {
   });
 
   function renderMealItem(itemData) {
-    return <MealItem title={itemData.item.title} />;
+    const item = itemData.item;
+    const mealItemProps = {
+      title: item.title,
+      imageUrl: item.imageUrl,
+      duration: item.duration,
+      complexity: item.complexity,
+      affordability: item.affordability,
+    };
+    return <MealItem {...mealItemProps} />;
   }
 
   return (
@@ -28,8 +37,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    justifyContent: 'center',
-    alignItems: 'center',
+    // justifyContent: 'center',
+    // alignItems: 'center',
   },
   text: {
     fontSize: 18,
