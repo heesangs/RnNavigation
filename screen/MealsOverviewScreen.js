@@ -1,10 +1,25 @@
-import { StyleSheet, Text, View } from 'react-native';
-import { MEALS } from '../data/dummy-data';
+import {StyleSheet, Text, View} from 'react-native';
+import {MEALS} from '../data/dummy-data';
+import {FlatList} from 'react-native-gesture-handler';
+import MealItem from '../components/MealItem';
+function MealsOverviewScreen({route}) {
+  const catID = route.params.categoryId;
 
-function MealsOverviewScreen() {
+  const displayMeals = MEALS.filter(mealItem => {
+    return mealItem.categoryIds.indexOf(catID) >= 0;
+  });
+
+  function renderMealItem(itemData) {
+    return <MealItem title={itemData.item.title} />;
+  }
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Meals Overview Screen</Text>
+      <FlatList
+        data={displayMeals}
+        keyExtractor={item => item.id}
+        renderItem={renderMealItem}
+      />
     </View>
   );
 }
@@ -19,7 +34,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 18,
     fontWeight: 'bold',
-  }
+  },
 });
 
-export default MealsOverviewScreen; 
+export default MealsOverviewScreen;
