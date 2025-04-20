@@ -8,9 +8,7 @@ function MealsOverviewScreen({ route, navigation }) {
   const catID = route.params.categoryId;
 
   useLayoutEffect(() => {
-    const categoryTitle = CATEGORIES.find(
-      category => category.id === catID,
-    ).title;
+    const categoryTitle = CATEGORIES.find(category => category.id === catID,).title;
 
     navigation.setOptions({ title: categoryTitle });
   }, [catID, navigation]);
@@ -22,11 +20,13 @@ function MealsOverviewScreen({ route, navigation }) {
   function renderMealItem(itemData) {
     const item = itemData.item;
     const mealItemProps = {
+      id: item.id,
       title: item.title,
       imageUrl: item.imageUrl,
       duration: item.duration,
       complexity: item.complexity,
       affordability: item.affordability,
+      navigation: navigation,
     };
     return <MealItem {...mealItemProps} />;
   }
