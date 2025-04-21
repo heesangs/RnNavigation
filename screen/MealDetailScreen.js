@@ -1,7 +1,9 @@
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
 import { useLayoutEffect } from 'react';
 import { MEALS } from '../data/dummy-data';
 import MealDetail from '../components/MealDetail';
+import SubTitle from '../components/MealDetail/SubTitle';
+import List from '../components/MealDetail/List';
 
 function MealDetailScreen({ route, navigation }) {
   const mealId = route.params.mealId;
@@ -12,25 +14,55 @@ function MealDetailScreen({ route, navigation }) {
   }, [navigation, mealId, selectedMeal]);
 
   return (
-    <View>
-      <Image source={{ uri: selectedMeal.imageUrl }} />
-      <Text>{selectedMeal.title}</Text>
-        <MealDetail
-          duration={selectedMeal.duration}
-          complexity={selectedMeal.complexity}
-          affordability={selectedMeal.affordability}
-        />
-        <Text>Ingredients</Text>
-        {selectedMeal.ingredients.map(ingredients => 
-            <Text key={ingredients}>{ingredients}</Text>
-        )}
-        <Text>Steps</Text>
-        {selectedMeal.steps.map(step => 
-            <Text key={step}>{step}</Text>
-        )}
-
-    </View>
+    <ScrollView style={styles.rootContainer}>
+      <Image source={{ uri: selectedMeal.imageUrl }} style={styles.image} />
+      <Text style={styles.title}>{selectedMeal.title}</Text>
+      <MealDetail
+        duration={selectedMeal.duration}
+        complexity={selectedMeal.complexity}
+        affordability={selectedMeal.affordability}
+        style={styles.detailContainer}
+        textStyle={styles.detailText}
+      />
+      <View style={styles.listOuterContainer}>
+        <View style={styles.listContainer}>
+          <SubTitle>Ingredients</SubTitle>
+          <List data={selectedMeal.ingredients} />
+          <SubTitle>Steps</SubTitle>
+          <List data={selectedMeal.steps} />
+        </View>
+      </View>
+    </ScrollView>
   );
 }
 
 export default MealDetailScreen;
+
+const styles = StyleSheet.create({
+  image: {
+    width: '100%',
+    height: 350,
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize: 24,
+    margin: 8,
+    textAlign: 'center',
+    color: 'white',
+  },
+  detailContainer: {
+    flexDirection: 'row',
+  },
+  detailText: {
+    color: '#e2b497',
+  },
+  listContainer: {
+    width: '80%',
+  },
+  listOuterContainer: {
+    alignItems: 'center',
+  },
+  rootContainer: {
+    marginBottom: 32,
+  },
+});
