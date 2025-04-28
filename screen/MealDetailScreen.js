@@ -1,14 +1,19 @@
 import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
-import { useLayoutEffect } from 'react';
+import { useContext, useLayoutEffect } from 'react';
 import { MEALS } from '../data/dummy-data';
 import MealDetail from '../components/MealDetail';
 import SubTitle from '../components/MealDetail/SubTitle';
 import List from '../components/MealDetail/List';
 import IconButton from '../components/IconButton';
+import { FavoritesContext } from '../store/context/favorites-context';
 
 function MealDetailScreen({ route, navigation }) {
+  const favoriteMealsCtx = useContext(FavoritesContext);
+
   const mealId = route.params.mealId;
   const selectedMeal = MEALS.find(meal => meal.id === mealId);
+
+  const mealIsFavorite = favoriteMealsCtx.ids.includes((mealId));
 
   function headerButtonPressHandler() {
     console.log('tapped');
