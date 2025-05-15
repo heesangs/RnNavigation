@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native';
+import GlobalStyle from '../constants/GlobalStyle';
 
 function MealDetail({ duration, complexity, affordability, style, textStyle }) {
   return (
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 8,
+    padding: GlobalStyle.Spacing.small,
   },
   detailItem: {
     marginHorizontal: 4,

@@ -7,6 +7,7 @@ import List from '../components/MealDetail/List';
 import IconButton from '../components/IconButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { addFavorite, removeFavorite } from '../store/redux/favorites';
+import GlobalStyle from '../constants/GlobalStyle';
 //import { FavoritesContext } from '../store/context/favorites-context';
 
 function MealDetailScreen({ route, navigation }) {
@@ -34,7 +35,7 @@ function MealDetailScreen({ route, navigation }) {
         return (
           <IconButton
             icon={mealIsFavorite ? 'star' : 'star-outline'}
-            color="white"
+            color={GlobalStyle.Colors.white}
             onPress={headerButtonPressHandler}
           />
         );
@@ -73,17 +74,17 @@ const styles = StyleSheet.create({
     height: 350,
   },
   title: {
-    fontWeight: 'bold',
-    fontSize: 24,
-    margin: 8,
-    textAlign: 'center',
-    color: 'white',
+    fontWeight: GlobalStyle.Typography.bold,
+    fontSize: GlobalStyle.Typography.large,
+    margin: GlobalStyle.Spacing.small,
+    textAlign: GlobalStyle.Typography.center,
+    color: GlobalStyle.Colors.white,
   },
   detailContainer: {
     flexDirection: 'row',
   },
   detailText: {
-    color: '#e2b497',
+    color: GlobalStyle.Colors.accentSecondary,
   },
   listContainer: {
     width: '80%',
@@ -92,6 +93,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   rootContainer: {
-    marginBottom: 32,
+    marginBottom: GlobalStyle.Spacing.large,
   },
 });

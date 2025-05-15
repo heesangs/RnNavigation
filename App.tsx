@@ -12,6 +12,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 // import FavoritesContextProvider from './store/context/favorites-context';
 import { Provider } from 'react-redux';
 import { store } from './store/redux/store';
+import GlobalStyle from './constants/GlobalStyle';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -20,13 +21,13 @@ function DrawerNavigator() {
   return (
     <Drawer.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: '#381703' },
-        headerTintColor: 'white',
-        drawerContentStyle: { backgroundColor: '#281103' },
-        drawerActiveBackgroundColor: '#3e2111',
-        drawerActiveTintColor: 'white',
+        headerStyle: { backgroundColor: GlobalStyle.Colors.primary },
+        headerTintColor: GlobalStyle.Colors.white,
+        drawerContentStyle: { backgroundColor: GlobalStyle.Colors.primaryDark },
+        drawerActiveBackgroundColor: GlobalStyle.Colors.primaryMedium,
+        drawerActiveTintColor: GlobalStyle.Colors.white,
         drawerInactiveBackgroundColor: 'transparent',
-        drawerInactiveTintColor: '#e4baa1',
+        drawerInactiveTintColor: GlobalStyle.Colors.accent,
         drawerItemStyle: { borderRadius: 5, marginVertical: 5 },
         drawerLabelStyle: { fontWeight: 'bold' },
         drawerStyle: { width: 200 },
@@ -35,15 +36,15 @@ function DrawerNavigator() {
         name="Category"
         component={CategoriesScreen}
         options={{
-          title: 'All Categories',
-          drawerIcon: ({ color, size }) => <MaterialIcons name="list" size={size || 16} color={color || 'white'} />,
+          title: "Sang's Categories",
+          drawerIcon: ({ color, size }) => <MaterialIcons name="list" size={size || GlobalStyle.Spacing.iconSize} color={color || GlobalStyle.Colors.white} />,
         }}
       />
       <Drawer.Screen
         name="Favorites"
         component={FavoritesScreen}
         options={{
-          drawerIcon: ({ color, size }) => <MaterialIcons name="star" size={size || 16} color={color || 'white'} />,
+          drawerIcon: ({ color, size }) => <MaterialIcons name="star" size={size || GlobalStyle.Spacing.iconSize} color={color || GlobalStyle.Colors.white} />,
         }}
       />
     </Drawer.Navigator>
@@ -59,9 +60,9 @@ export default function App() {
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{
-              headerStyle: { backgroundColor: '#381703' },
-              headerTintColor: 'white',
-              contentStyle: { backgroundColor: '#281103' },
+              headerStyle: { backgroundColor: GlobalStyle.Colors.primary },
+              headerTintColor: GlobalStyle.Colors.white,
+              contentStyle: { backgroundColor: GlobalStyle.Colors.primaryDark },
             }}>
             <Stack.Screen
               name="Drawer"

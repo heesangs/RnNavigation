@@ -1,6 +1,7 @@
 import { FlatList, View, StyleSheet } from 'react-native';
 import { CATEGORIES } from '../data/dummy-data';
 import CategoryGridTitle from '../components/CategoryGridTitle';
+import GlobalStyle from '../constants/GlobalStyle';
 
 function CategoriesScreen({ navigation }) {
   function renderCategoryItem(itemData) {
@@ -28,6 +29,6 @@ export default CategoriesScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#281103',
+    backgroundColor: GlobalStyle.Colors.primaryDark,
   },
 });

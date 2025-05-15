@@ -8,7 +8,7 @@ const os = require('os');
  * @type {import('@react-native/metro-config').MetroConfig}
  */
 const config = {
-  maxWorkers: os.cpus().length,
+  maxWorkers: os.availableParallelism ? os.availableParallelism() : os.cpus().length,
 };
 
 module.exports = mergeConfig(getDefaultConfig(__dirname), config);

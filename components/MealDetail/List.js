@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native';
+import GlobalStyle from '../../constants/GlobalStyle';
 
 function List({ data }) {
   return data.map(dataPoint => (
@@ -17,10 +18,10 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     marginVertical: 4,
     marginHorizontal: 12,
-    backgroundColor: '#e2b497',
+    backgroundColor: GlobalStyle.Colors.accentSecondary,
   },
   itemText: {
     color: '#351401',
-    textAlign: 'center',
+    textAlign: GlobalStyle.Typography.center,
   },
 });

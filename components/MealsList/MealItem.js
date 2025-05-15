@@ -1,6 +1,7 @@
 import { View, Text, Pressable, Image, StyleSheet, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import MealDetail from '../MealDetail';
+import GlobalStyle from '../../constants/GlobalStyle';
 
 function MealItem({ id, title, imageUrl, duration, complexity, affordability }) {
   const navigation = useNavigation();
@@ -13,7 +14,7 @@ function MealItem({ id, title, imageUrl, duration, complexity, affordability }) 
   return (
     <View style={styles.mealItem}>
       <Pressable
-        android_ripple={{ color: '#ccc' }}
+        android_ripple={{ color: GlobalStyle.Colors.cardShadow }}
         style={({ pressed }) => (pressed ? styles.buttonPressed : null)}
         onPress={pressHandler}>
         <View style={styles.innerContainer}>
@@ -31,14 +32,14 @@ export default MealItem;
 
 const styles = StyleSheet.create({
   mealItem: {
-    margin: 16,
-    borderRadius: 8,
-    backgroundColor: 'white',
-    elevation: 4,
-    shadowColor: 'black',
-    shadowOpacity: 0.25,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 8,
+    margin: GlobalStyle.Spacing.medium,
+    borderRadius: GlobalStyle.Spacing.borderRadius,
+    backgroundColor: GlobalStyle.Colors.cardBackground,
+    elevation: GlobalStyle.Spacing.shadow.elevation,
+    shadowColor: GlobalStyle.Colors.shadowColor,
+    shadowOpacity: GlobalStyle.Spacing.shadow.shadowOpacity,
+    shadowOffset: GlobalStyle.Spacing.shadow.shadowOffset,
+    shadowRadius: GlobalStyle.Spacing.shadow.shadowRadius,
     overflow: Platform.OS === 'android' ? 'hidden' : 'visible',
   },
   buttonPressed: {
@@ -48,21 +49,21 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   innerContainer: {
-    borderRadius: 8,
+    borderRadius: GlobalStyle.Spacing.borderRadius,
     overflow: 'hidden',
   },
   image: {
     width: '100%',
-    height: 200,
+    height: GlobalStyle.Spacing.mealItemHeight,
   },
   radius: {
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
+    borderTopLeftRadius: GlobalStyle.Spacing.borderRadius,
+    borderTopRightRadius: GlobalStyle.Spacing.borderRadius,
   },
   title: {
-    fontWeight: 'bold',
-    textAlign: 'center',
-    fontSize: 18,
-    margin: 8,
+    fontWeight: GlobalStyle.Typography.bold,
+    textAlign: GlobalStyle.Typography.center,
+    fontSize: GlobalStyle.Typography.medium,
+    margin: GlobalStyle.Spacing.small,
   },
 });

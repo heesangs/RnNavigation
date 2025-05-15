@@ -2,6 +2,7 @@ import { StyleSheet, View } from 'react-native';
 import { useLayoutEffect } from 'react';
 import { MEALS, CATEGORIES } from '../data/dummy-data';
 import MealList from '../components/MealsList/MealList';
+import GlobalStyle from '../constants/GlobalStyle';
 
 function MealsOverviewScreen({ route, navigation }) {
   const catID = route.params.categoryId;
@@ -28,5 +29,6 @@ export default MealsOverviewScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: GlobalStyle.Colors.primaryDark,
   },
 })

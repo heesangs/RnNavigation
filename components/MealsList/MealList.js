@@ -1,6 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import MealItem from './MealItem';
+import GlobalStyle from '../../constants/GlobalStyle';
 
 function MealList({ items }) {
   function renderMealItem(itemData) {
@@ -30,7 +31,7 @@ function MealList({ items }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    padding: GlobalStyle.Spacing.medium,
   },
 });
 

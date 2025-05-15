@@ -1,4 +1,5 @@
 import { View, Text, Pressable, StyleSheet, Platform } from 'react-native';
+import GlobalStyle from '../constants/GlobalStyle';
 
 function CategoryGridTitle({ title, color, onPress }) {
   return (
@@ -9,7 +10,7 @@ function CategoryGridTitle({ title, color, onPress }) {
           { backgroundColor: color },
           Platform.OS === 'ios' && pressed && styles.buttonPressed,
         ]}
-        android_ripple={{ color: 'rgba(0, 0, 0, 0.15)' }}
+        android_ripple={{ color: GlobalStyle.Colors.rippleColor }}
         onPress={onPress}>
         <View style={styles.innerContainer}>
           <Text style={styles.title}>{title}</Text>
@@ -24,19 +25,19 @@ export default CategoryGridTitle;
 const styles = StyleSheet.create({
   gridItem: {
     flex: 1,
-    margin: 16,
-    height: 150,
-    borderRadius: 10,
-    elevation: 4,
-    shadowColor: 'black',
+    margin: GlobalStyle.Spacing.medium,
+    height: GlobalStyle.Spacing.gridItemHeight,
+    borderRadius: GlobalStyle.Spacing.borderRadiusMedium,
+    elevation: GlobalStyle.Spacing.shadow.elevation,
+    shadowColor: GlobalStyle.Colors.shadowColor,
     shadowOpacity: 0.16,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 8,
+    shadowOffset: GlobalStyle.Spacing.shadow.shadowOffset,
+    shadowRadius: GlobalStyle.Spacing.shadow.shadowRadius,
     overflow: Platform.OS === 'android' ? 'hidden' : 'visible',
   },
   button: {
     flex: 1,
-    borderRadius: 10,
+    borderRadius: GlobalStyle.Spacing.borderRadiusMedium,
   },
   buttonPressed: {
     opacity: 0.9,
@@ -44,12 +45,12 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     flex: 1,
-    padding: 16,
+    padding: GlobalStyle.Spacing.medium,
     justifyContent: 'center',
     alignItems: 'center',
   },
   title: {
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: GlobalStyle.Typography.small,
+    fontWeight: GlobalStyle.Typography.bold,
   },
 });
