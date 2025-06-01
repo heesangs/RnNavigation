@@ -1,0 +1,13 @@
+{
+  "React Native Function Component": {
+    "prefix": "rnf",
+    "body": [
+      "function ${1:ComponentName}({ ${2:props} }) {",
+      "    return (",
+      "        <View></View>",
+      "    )",
+      "}"
+    ],
+    "description": "Create a simple React Native function component"
+  }
+} 

@@ -1,13 +1,13 @@
 import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
 import { useCallback, useLayoutEffect } from 'react';
-import { MEALS } from '../data/dummy-data';
-import MealDetail from '../components/MealDetail';
-import SubTitle from '../components/MealDetail/SubTitle';
-import List from '../components/MealDetail/List';
-import IconButton from '../components/IconButton';
+import { MEALS } from '../../data/dummy-data';
+import MealDetail from '../../components/MealDetail';
+import SubTitle from '../../components/MealDetail/SubTitle';
+import List from '../../components/MealDetail/List';
+import IconButton from '../../components/IconButton';
 import { useDispatch, useSelector } from 'react-redux';
-import { addFavorite, removeFavorite } from '../store/redux/favorites';
-import GlobalStyle from '../constants/GlobalStyle';
+import { addFavorite, removeFavorite } from '../../store/redux/favorites';
+import GlobalStyle from '../../constants/GlobalStyle';
 //import { FavoritesContext } from '../store/context/favorites-context';
 
 function MealDetailScreen({ route, navigation }) {

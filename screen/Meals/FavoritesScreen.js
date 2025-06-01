@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
-import MealList from '../components/MealsList/MealList';
-// import { FavoritesContext } from '../store/context/favorites-context';
+import MealList from '../../components/MealsList/MealList';
+// import { FavoritesContext } from '../../store/context/favorites-context';
 // import { useContext } from 'react';
-import { MEALS } from '../data/dummy-data';
+import { MEALS } from '../../data/dummy-data';
 import { View, StyleSheet, Text } from 'react-native';
-import GlobalStyle from '../constants/GlobalStyle';
+import GlobalStyle from '../../constants/GlobalStyle';
 
 function FavoritesScreen() {
   // const favoritesMealsCtx = useContext(FavoritesContext);

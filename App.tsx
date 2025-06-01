@@ -3,11 +3,15 @@ import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import CategoriesScreen from './screen/CategoriesScreen';
-import MealsOverviewScreen from './screen/MealsOverviewScreen';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import CategoriesScreen from './screen/Meals/CategoriesScreen';
+import MealsOverviewScreen from './screen/Meals/MealsOverviewScreen';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import MealDetailScreen from './screen/MealDetailScreen';
-import FavoritesScreen from './screen/FavoritesScreen';
+import MealDetailScreen from './screen/Meals/MealDetailScreen';
+import FavoritesScreen from './screen/Meals/FavoritesScreen';
+import AllExpenses from './screen/Expenses/AllExpenses';
+import RecentExpenses from './screen/Expenses/RecentExpenses';
+import ManageExpenses from './screen/Expenses/ManageExpenses';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 // import FavoritesContextProvider from './store/context/favorites-context';
 import { Provider } from 'react-redux';
@@ -16,6 +20,63 @@ import GlobalStyle from './constants/GlobalStyle';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
+const BottomTab = createBottomTabNavigator();
+
+function BottomTabNavigator() {
+  return (
+    <BottomTab.Navigator
+      screenOptions={{
+        headerShown: false,
+        headerStyle: { backgroundColor: GlobalStyle.Colors.primary },
+        headerTintColor: GlobalStyle.Colors.accent,
+        tabBarActiveTintColor: GlobalStyle.Colors.white,
+        tabBarInactiveTintColor: GlobalStyle.Colors.accent,
+        tabBarStyle: { backgroundColor: GlobalStyle.Colors.primary },
+        tabBarLabelStyle: { fontWeight: 'bold' },
+      }}>
+      <BottomTab.Screen
+        name="Categories"
+        component={CategoriesScreen}
+        options={{
+          title: '모든 카테고리',
+          tabBarIcon: ({ color, size }) => <MaterialIcons name="list" size={size || GlobalStyle.Spacing.iconSize} color={color || GlobalStyle.Colors.white} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Favorites"
+        component={FavoritesScreen}
+        options={{
+          title: '즐겨찾기',
+          tabBarIcon: ({ color, size }) => <MaterialIcons name="star" size={size || GlobalStyle.Spacing.iconSize} color={color || GlobalStyle.Colors.white} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="AllExpenses"
+        component={AllExpenses}
+        options={{
+          title: '전체 지출',
+          tabBarIcon: ({ color, size }) => <MaterialIcons name="receipt-long" size={size || GlobalStyle.Spacing.iconSize} color={color || GlobalStyle.Colors.white} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="RecentExpenses"
+        component={RecentExpenses}
+        options={{
+          title: '최근 지출',
+          tabBarIcon: ({ color, size }) => <MaterialIcons name="access-time" size={size || GlobalStyle.Spacing.iconSize} color={color || GlobalStyle.Colors.white} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="ManageExpenses"
+        component={ManageExpenses}
+        options={{
+          title: '지출 관리',
+          tabBarIcon: ({ color, size }) => <MaterialIcons name="add-circle-outline" size={size || GlobalStyle.Spacing.iconSize} color={color || GlobalStyle.Colors.white} />,
+        }}
+      />
+    </BottomTab.Navigator>
+  );
+}
 
 function DrawerNavigator() {
   return (
@@ -33,17 +94,18 @@ function DrawerNavigator() {
         drawerStyle: { width: 200 },
       }}>
       <Drawer.Screen
-        name="Category"
-        component={CategoriesScreen}
+        name="BottomTabs"
+        component={BottomTabNavigator}
         options={{
-          title: "Sang's Categories",
-          drawerIcon: ({ color, size }) => <MaterialIcons name="list" size={size || GlobalStyle.Spacing.iconSize} color={color || GlobalStyle.Colors.white} />,
+          title: "Sang's 음식 앱",
+          drawerIcon: ({ color, size }) => <MaterialIcons name="restaurant-menu" size={size || GlobalStyle.Spacing.iconSize} color={color || GlobalStyle.Colors.white} />,
         }}
       />
       <Drawer.Screen
         name="Favorites"
         component={FavoritesScreen}
         options={{
+          title: "즐겨찾기",
           drawerIcon: ({ color, size }) => <MaterialIcons name="star" size={size || GlobalStyle.Spacing.iconSize} color={color || GlobalStyle.Colors.white} />,
         }}
       />
