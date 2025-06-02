@@ -4,6 +4,19 @@ const Colors = {
   primary: '#381703',       // 기본 네비게이션 배경색
   primaryDark: '#281103',   // 페이지 배경색, 드로어 배경색
   primaryMedium: '#3e2111', // 드로어 활성 배경색
+  //primary
+  pri10: '#290F00',
+  pri20: '#4A2611',
+  // pri30: '#913500',
+  // pri40: '#C94A00',
+  // pri50: '#FF5E00',
+  // pri60: '#FF7B2E',
+  // pri70: '#FF9B61',
+  pri80: '#FFBD96',
+  pri90: '#F9DBCA',
+  pri95: '#FEEEE5',
+  pri99: '#FFFAF7',
+
 
   // 글씨/아이콘 색상
   white: 'white',           // 기본 텍스트, 아이콘 색상
